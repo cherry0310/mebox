@@ -23,7 +23,7 @@ export default class App extends Component {
 
     async componentDidMount(){
         const result = await ServiceClient.getInstance().getAsyncUserPlayLists("357851968");
-        //console.log(result);
+        console.log(result);
         this.setState({
           playlists: result
         });
@@ -45,7 +45,7 @@ export default class App extends Component {
     render()
     {
         const { playlists } = this.state;
-        //console.log(playlists);
+        console.log(playlists);
         return(
           <div className="nm-app">
             <header>
