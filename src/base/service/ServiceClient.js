@@ -37,24 +37,28 @@ export default class ServiceClient{
         }
       }
 
-  // getUserPlayLists(uid){
-  //   return new Promise((resolve, reject) => {
-  //       $.ajax({
-  //         url: "/api/user/playlist",
-  //         type: "GET",
-  //         data: {
-  //           uid,
-  //           limit: 1000,
-  //           offset: 0
-  //         }
-  //       }).always(res => {
-  //         //console.log(res);
-  //         if(res.code === 200){
-  //           resolve(res.playlist);
-  //         }else {
-  //           reject("error");
-  //         }
-  //       });
-  //   });
-  // }
+  async getAsyncPlayListDetail(pid){
+      let res = null;
+      try {
+          res = await $.ajax({
+              url: "/api/playlist/detail",
+              type: "GET",
+              data: {
+                  id: pid
+              }
+          });
+      } catch (e) {
+          throw(e);
+      }
+
+      if (res.code === 200)
+      {
+          return res.result;
+      }
+      else
+      {
+          return res;
+      }
+  }
+
 }
