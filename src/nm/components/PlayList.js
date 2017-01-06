@@ -42,7 +42,7 @@ export default class PlayList extends Component {
     {
         const {playlists} = this.props;
         const selectedId = this.state.selectedId;
-        console.log(playlists);
+        //console.log(playlists);
         return(
             <ul className="nm-play-list">
                 {playlists.map((item,index) => {
