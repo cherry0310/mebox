@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import ServiceClient from "../../base/service/ServiceClient";
 
 import PlayList from "./PlayList";
+import TrackTable from "./TrackTable";
 
 export default class App extends Component {
 
     constructor (props) {
         super(props);
+        this.handlePlayListClick = this.handlePlayListClick.bind(this);
     }
 
     static defaultProps = {
@@ -18,7 +20,23 @@ export default class App extends Component {
     }
 
     state = {
-        playlists: []
+        playlists: [],
+        selectedPlayList: []
+
+    }
+
+    async handlePlayListClick(id){
+        console.log(id);
+        const result = await ServiceClient.getInstance().getAsyncPlayListDetail(id);
+        this.setState({
+          selectedPlayList: result
+        });
+        //console.log(result);
+    }
+
+    async handleSongListClick(id){
+        console.log(id);
+
     }
 
     async componentDidMount(){
@@ -29,22 +47,9 @@ export default class App extends Component {
         });
     }
 
-    // componentDidMount()
-    // {
-    //   //then里的res是resolve
-    //   ServiceClient.getInstance().getUserPlayLists("357851968").then(res => {
-    //     //console.log(res);
-    //     return "then";
-    //   }).catch( error =>{
-    //     console.log(error);
-    //   }).then( res =>{
-    //     console.log(res);
-    //   })
-    // }
-
     render()
     {
-        const { playlists } = this.state;
+        const { playlists, selectedPlayList } = this.state;
         //console.log(playlists);
         return(
           <div className="nm-app">
@@ -53,8 +58,8 @@ export default class App extends Component {
               <h1>网易云音乐</h1>
             </header>
             <main>
-              <aside><PlayList playlists = { playlists } /></aside>
-              <section></section>
+              <aside><PlayList playlists = { playlists } onClick={this.handlePlayListClick} /></aside>
+              <section><TrackTable selectedPlayList = {selectedPlayList} onClick={this.handleSongListClick}  /></section>
             </main>
             <footer></footer>
           </div>
