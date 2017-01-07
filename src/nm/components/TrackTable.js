@@ -18,11 +18,11 @@ export default class TrackTable extends Component {
       selectedSid: null
     }
 
-    componentWillReceiveProps(nextProp){
-      if(this.state.selectedSid === null && nextProp.selectedPlayList.length > 0){
-        this.handleClick(nextProp.selectedPlayList[0].id);
-      }
-    }
+    // componentWillReceiveProps(nextProp){
+    //   if(this.state.selectedSid === null && nextProp.selectedPlayList.length > 0){
+    //     this.handleClick(nextProp.selectedPlayList[0].id);
+    //   }
+    // }
 
     componentDidMount()
     {

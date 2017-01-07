@@ -21,7 +21,7 @@ export default class App extends Component {
 
     state = {
         playlists: [],
-        selectedPlayList: []
+        selectedPlayList: null
 
     }
 
@@ -31,7 +31,6 @@ export default class App extends Component {
         this.setState({
           selectedPlayList: result
         });
-        //console.log(result);
     }
 
     async handleSongListClick(id){
