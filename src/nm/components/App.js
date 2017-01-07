@@ -35,7 +35,6 @@ export default class App extends Component {
 
     async handleSongListClick(id){
         console.log(id);
-
     }
 
     async componentDidMount(){

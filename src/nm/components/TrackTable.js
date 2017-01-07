@@ -4,6 +4,7 @@ export default class TrackTable extends Component {
 
     constructor (props) {
         super(props);
+        this.handleClick = this.handleClick.bind(this);
     }
 
     static defaultProps = {
@@ -18,11 +19,11 @@ export default class TrackTable extends Component {
       selectedSid: null
     }
 
-    // componentWillReceiveProps(nextProp){
-    //   if(this.state.selectedSid === null && nextProp.selectedPlayList.length > 0){
-    //     this.handleClick(nextProp.selectedPlayList[0].id);
-    //   }
-    // }
+    componentWillReceiveProps(nextProp){
+      if(this.state.selectedSid === null && nextProp.selectedPlayList !== null && nextProp.selectedPlayList.tracks.length > 0){
+        this.handleClick(nextProp.selectedPlayList.tracks[0].id);
+      }
+    }
 
     componentDidMount()
     {
@@ -47,7 +48,10 @@ export default class TrackTable extends Component {
             <table className="track-table">
               <thead>
                 <tr>
-                  <td>音乐标题</td>
+                  <td>歌曲标题</td>
+                  <td>时长</td>
+                  <td>歌手</td>
+                  <td>专辑</td>
                 </tr>
               </thead>
               <tbody>
@@ -57,10 +61,12 @@ export default class TrackTable extends Component {
                   return(
                     <tr key={item.id} onClick={() => this.handleClick(item.id)} className={selectedClass}>
                       <td>{item.name}</td>
+                      <td>0{parseInt(item.duration/60000)}:{parseInt(item.duration/1000%60) >= 10 ? parseInt(item.duration/1000%60): "0"+ parseInt(item.duration/1000%60)}</td>
+                      <td>{item.artists[0].name}</td>
+                      <td>{item.album.name}</td>
                     </tr>
                   )
                 })
-
                 }
               </tbody>
             </table>
