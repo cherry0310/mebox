@@ -9,6 +9,7 @@ export default class App extends Component {
     constructor (props) {
         super(props);
         this.handlePlayListClick = this.handlePlayListClick.bind(this);
+        this.handleSongListClick = this.handleSongListClick.bind(this);
     }
 
     static defaultProps = {
