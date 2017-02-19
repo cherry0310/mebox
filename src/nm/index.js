@@ -1,12 +1,11 @@
 import React from 'react';
 import {render} from 'react-dom';
 
-// import App from './components/App';
-import QualityCourse from './components/QualityCourse';
+ import App from './components/App';
 
 function run(){
   render(
-    <QualityCourse />,
+    <App />,
     document.getElementById("root")
   );
 }
