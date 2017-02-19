@@ -11,54 +11,54 @@ export default class ServiceClient{
     return ServiceClient._instance;
   }
 
-  // async getAsyncUserPlayLists(uid){
-  //       let res = null;
-  //       try {
-  //           res = await $.ajax({
-  //               url: "/api/user/playlist",
-  //               type: "GET",
-  //               data: {
-  //                   uid,
-  //                   limit: 1000,
-  //                   offset: 0
-  //               }
-  //           });
-  //       } catch (e) {
-  //           throw(e);
-  //       }
-  //
-  //       if (res.code === 200)
-  //       {
-  //           return res.playlist;
-  //       }
-  //       else
-  //       {
-  //           return res;
-  //       }
-  //     }
+  async getAsyncUserPlayLists(uid){
+        let res = null;
+        try {
+            res = await $.ajax({
+                url: "/api/user/playlist",
+                type: "GET",
+                data: {
+                    uid,
+                    limit: 1000,
+                    offset: 0
+                }
+            });
+        } catch (e) {
+            throw(e);
+        }
 
-  // async getAsyncPlayListDetail(pid){
-  //     let res = null;
-  //     try {
-  //         res = await $.ajax({
-  //             url: "/api/playlist/detail",
-  //             type: "GET",
-  //             data: {
-  //                 id: pid
-  //             }
-  //         });
-  //     } catch (e) {
-  //         throw(e);
-  //     }
-  //
-  //     if (res.code === 200)
-  //     {
-  //         return res.result;
-  //     }
-  //     else
-  //     {
-  //         return res;
-  //     }
-  // }
+        if (res.code === 200)
+        {
+            return res.playlist;
+        }
+        else
+        {
+            return res;
+        }
+      }
+
+  async getAsyncPlayListDetail(pid){
+      let res = null;
+      try {
+          res = await $.ajax({
+              url: "/api/playlist/detail",
+              type: "GET",
+              data: {
+                  id: pid
+              }
+          });
+      } catch (e) {
+          throw(e);
+      }
+
+      if (res.code === 200)
+      {
+          return res.result;
+      }
+      else
+      {
+          return res;
+      }
+  }
 
 }
